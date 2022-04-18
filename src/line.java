@@ -25,17 +25,45 @@ public class line {
     //direction
     int direction = 1;
 
-    void paintSelf(Graphics g){
-        if (a<0.1) {
-            direction = 1;}
-        else if (a>0.9){
-            direction = -1;}
+    //state
+    //0 moving left to right, 1 grab, 2 pull
+    int state;
 
-        a = a + 0.005*direction;
+    void lines (Graphics g){
         endx = (int) (x + length*Math.cos(a*Math.PI));
         endy = (int) (y + length*Math.sin(a*Math.PI));
-
         g.setColor(Color.black);
         g.drawLine(x, y, endx, endy);
+    }
+
+    void paintSelf(Graphics g){
+
+        switch(state){
+            case 0: 
+                if (a<0.1) {
+                    direction = 1;}
+                else if (a>0.9){
+                    direction = -1;}
+                a = a + 0.005*direction;
+                lines(g);                
+                break;
+            
+            case 1:
+            if (length<500){
+                length = length + 10;
+                lines(g);
+            } else {state=0;}
+            
+            case 2:
+                if (length>100){
+                    length = length - 10;
+                    lines(g);
+                } else {
+                    state = 0;
+                }
+            
+                break;
+            default:     
+        }                 
     }
 }
