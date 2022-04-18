@@ -9,7 +9,8 @@ public class gameWindow extends JFrame {
     background bg = new background();
     void launch (){
         this. setVisible(true);
-        this.setSize(925, 1019);
+        this.setSize(905, 1019);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setTitle("Gold Mine");
 
