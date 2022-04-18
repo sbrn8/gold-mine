@@ -7,6 +7,7 @@ import java.awt.*;
 public class gameWindow extends JFrame {
 
     background bg = new background();
+    line Line = new line();
     void launch (){
         this. setVisible(true);
         this.setSize(905, 1019);
@@ -19,6 +20,7 @@ public class gameWindow extends JFrame {
 
     public void paint (Graphics g){
         bg.paintSelf(g);
+        Line.paintSelf(g);
     }
     
     public static void main(String[] args) {
